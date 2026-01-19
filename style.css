@@ -4,15 +4,15 @@ body {
     font-family: sans-serif;
 }
 .map {
-    width: 700px;
+    width: 800px;
     height: 400px;
     background: url(./map.png);
     background-size: contain;
     
 }
 .layout {
-    width: 700px;
-    height: 400px;
+    width: 800px;
+    height: 380px;
     display: flex;
     flex-wrap: wrap;
 }
