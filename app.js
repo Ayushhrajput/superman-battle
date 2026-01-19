@@ -1,5 +1,5 @@
 const layout = document.querySelector('.layout')
-const width = 80;
+const width = 70;
 const height = 40;
 
 for(let idx=0; idx<width*height; idx++){
