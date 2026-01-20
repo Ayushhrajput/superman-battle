@@ -1,24 +1,257 @@
+@font-face {
+    font-family: Style;
+    src: url(./BBHBartle-Regular.ttf);
+}
 body {
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: Style;
+    position: relative;
 }
 .map {
+    position: absolute;
     width: 800px;
-    height: 380px;
-    background: url(./map.png);
-    background-size: contain;
-    
+    height: 400px;
+    background: url(./map.png) no-repeat;
+    background-size: cover;
 }
+
 .layout {
     width: 800px;
-    height: 380px;
+    height: 400px;
     display: flex;
     flex-wrap: wrap;
+
+}
+.gameTitle {
+    position: absolute;
+    width: 800px;
+    height: 400px;
+    background: url(./map.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.playGame {
+    padding:40px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    color: white;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn {
+    border: none;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: #000;
+    font-size: large;
+    color: white;
+    border-radius: 16px;
+}
+.res {
+    position: absolute;
+    width: 800px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.showRes {
+    z-index: 4;
+}
+.window {
+    width: 600px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    color: white;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gameBtn {
+    border: none;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: #000;
+    font-size: large;
+    color: white;
+    border-radius: 16px;
+}
+.hideLayout {
+    display: none;
+}
+.showLayout {
+    display: inline-block;
 }
 .layout div {
     width: 10px;
     height: 10px;
-    
     box-sizing: border-box;
+}
+.supermanPos {
+    background: url(./superman.png) center no-repeat;
+    background-size: contain;
+    transform: scale(6) ;
+}
+.batmanPos {
+    background: url(./batman.png) center;
+    background-size: contain;
+    transform: scale(6) scaleX(-1);
+    
+}
+.superman {
+    background: url(./superman.png) center no-repeat;
+    background-size: contain;
+    transform: scale(4) ;
+}
+.batman {
+    background: url(./batman.png) center;
+    background-size: contain;
+    transform: scale(4);
+}
+.hitLaser {
+    position: fixed;
+    right: 60px;
+    bottom: 20vh;
+    width: 60px;
+    height: 60px;
+    background: rgb(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    overflow: hidden;
+}
+.jump {
+    position: fixed;
+    left: 60px;
+    bottom: 30vh;
+    width: 60px;
+    height: 60px;
+    background: rgb(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+}
+.fly {
+    position: fixed;
+    left: 60px;
+    bottom: 40vh;
+    width: 60px;
+    height: 60px;
+    background: rgb(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+}
+.speed {
+    position: fixed;
+    right: 60px;
+    bottom: 10vh;
+    width: 60px;
+    height: 60px;
+    background: rgb(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+}
+.moveLeft {
+    position: fixed;
+    left: 60px;
+    bottom: 10vh;
+    width: 40px;
+    height: 40px;
+    background: rgb(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+}
+.moveRight {
+    position: fixed;
+    margin-left: 4px;
+    left: 100px;
+    bottom: 10vh;
+    width: 40px;
+    height: 40px;
+    background: rgb(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+}
+.punch {
+    position: fixed;
+    left: 60px;
+    bottom: 20vh;
+    width: 60px;
+    height: 60px;
+    background: rgb(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+}
+.hitLaserIcon {
+    width: 60px;
+    height: 60px;
+    background: url(./supermanLaser.png) center no-repeat;
+    background-size: contain;
+    transform: scaleX(-1);
+}
+.jumpIcon {
+    width: 50px;
+    height: 50px;
+    background: url(./superman.png) center no-repeat;
+    background-size: contain;
+}
+.flyIcon {
+    width: 50px;
+    height: 50px;
+    background: url(./fly.png) center no-repeat;
+    background-size: contain;
+}
+.speedIcon {
+    width: 50px;
+    height: 50px;
+    background: url(./speed.png) center no-repeat;
+    background-size: contain;
+}
+.punchIcon {
+    width: 50px;
+    height: 50px;
+    background: url(./punch.png) center no-repeat;
+    background-size: contain;
+    transform: scaleX(-1);
+}
+.supermanHitpoints {
+    background:  rgb(1, 174, 255);
+}
+.batmanHitpoints {
+    background: rgb(255, 64, 64);
+}
+.laser {
+    background: url(./redLaser.png) center;
+    background-size: contain;
+    transform: scale(10);
+}
+.fists {
+    display: none;
+}
+.fires {
+    background: url(./batWeapon.png) center;
+    background-size: contain;
+    transform: scale(4);
+}
+.batmanLaser {
+    background: url(./blueLaser.png) center;
+    background-size: contain;
+    transform: scale(10);
 }
