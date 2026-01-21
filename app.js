@@ -29,6 +29,7 @@ const superman = 564;
 const batman = 609;
 
 squares[supermanIdx].classList.add('supermanPos');
+squares[supermanIdx+1].classList.add('supermanPosition');
 squares[batmanIdx].classList.add('batmanPos');
 squares[superman].classList.add('superman')
 squares[batman].classList.add('batman')
@@ -69,9 +70,12 @@ gameBtn.addEventListener('click', ()=> {
 })
 
 function supermanJump() {
+    squares[supermanIdx].classList.add('supermanJump')
+    squares[supermanIdx+1].classList.remove('supermanPosition');
     let jumpInterval = setInterval(() => {
         squares[supermanIdx].classList.remove('supermanPos');
         supermanIdx-= width;
+        
         squares[supermanIdx].classList.add('supermanPos');
         
     }, 40);
@@ -93,6 +97,8 @@ function getDown() {
     }, 40);
     setTimeout(() => {
         clearInterval(getDownInterval)
+        squares[supermanIdx].classList.remove('supermanJump')
+        squares[supermanIdx+1].classList.add('supermanPosition');
         supermanOnLand = true;
     }, 400);
 }
@@ -219,6 +225,8 @@ function laser() {
 
 function fists() {
     let fistsIdx = supermanIdx
+    squares[supermanIdx+1].classList.add('supermanFists')
+    squares[supermanIdx].classList.remove('supermanPosition');
     let fistsInterval = setInterval(() => {
         fistsIdx+=1
         if(squares[fistsIdx].classList.contains('batmanPos')){
@@ -237,8 +245,13 @@ function fists() {
                     squares[fistsIdx].classList.remove('fists')
                 }, 10);
                 setTimeout(() => {
+                    squares[supermanIdx+1].classList.add('supermanPosition');
                     clearInterval(stopUsingFistsInterval)
                 }, 40);
+                setTimeout(() => {
+                    
+                    squares[supermanIdx+1].classList.remove('supermanFists')
+                }, 600);
             }
             stopUsingFists()
         }, 40);
@@ -292,7 +305,7 @@ function fistsAction() {
     setTimeout(() => {
         canMove = true;
         canUseFists = true;
-    }, 480);
+    }, 600);
 }
 function moveLeftAction() {
     supermanLeftMove()

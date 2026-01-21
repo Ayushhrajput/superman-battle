@@ -100,9 +100,22 @@ body {
     box-sizing: border-box;
 }
 .supermanPos {
-    transform: scale(12) scaleX(-1);
-    animation: supermanPos 1s ease infinite;
+    background: url(./supermanPos/supermanPos.png) center no-repeat;
+    background-size: contain;
+    transform: scale() scaleX(-1);
+    display: none;
 }
+.supermanPosition {
+    background: url(./supermanPos/supermanPos.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) scaleX(-1);
+}
+.hideSuperman {
+    display: none;
+}
+
+
+
 .batmanPos {
     background: url(./batman.png) center;
     background-size: contain;
@@ -110,7 +123,7 @@ body {
     
 }
 .superman {
-    background: url(./supermanPos/superman.png) center no-repeat;
+    background: url(./supermanPos/supermanPos.png) center no-repeat;
     background-size: contain;
     transform: scale(6) scaleX(-1);
 }
@@ -241,12 +254,12 @@ body {
     filter: invert(0.4);
 }
 .supermanHitpoints {
-    background:  url(./blueLaser.png) center;
-    background-size: contain;
+    background:   rgb(34, 98, 236);
+    
 }
 .batmanHitpoints {
-    background: url(./redLaser.png) center ;
-    background-size: contain;
+    background: rgb(238, 32, 32);
+    
     
 }
 .laser {
@@ -256,64 +269,112 @@ body {
 .fists {
     display: none;
 }
+.supermanFists {
+    transform: scale(12);
+    animation: fists 0.6s ease;
+}
+.supermanJump {
+    transform: scale(12);
+    animation: supermanJump 0.8s ease;
+}
 .fires {
     background: url(./batWeapon.png) center;
     background-size: contain;
-    transform: scale(4);
 }
 .batmanLaser {
     background: url(./blueLaser.png) center;
     background-size: contain;
 }
 
-@keyframes supermanPos {
+
+@keyframes fists {
     0% {
-        background: url(./supermanPos/superman.png) center no-repeat;
+        background: url(./supermanFists/supermanFists.png) center no-repeat;
         background-size: contain;
         
         
     }
     10%{
-        background: url(./supermanPos/supermanPos2.png) center no-repeat;
+        background: url(./supermanFists/supermanFists.png) center no-repeat;
         background-size: contain;
     
     }
     30% {
-        background: url(./supermanPos/supermanPos3.png) center no-repeat;
+        background: url(./supermanFists/supermanFists2.png) center no-repeat;
         background-size: contain;
+        
     
     }
     40%{
-        background: url(./supermanPos/supermanPos4.png) center no-repeat;
+        background: url(./supermanFists/supermanFists2.png) center no-repeat;
         background-size: contain;
+        
         
     }
     50% {
-        background: url(./supermanPos/supermanPos4.png) center no-repeat;
+        background: url(./supermanFists/supermanFists3.png) center no-repeat;
         background-size: contain;
         
     }
     60% {
-        background: url(./supermanPos/supermanPos4.png) center no-repeat;
+        background: url(./supermanFists/supermanFists3.png) center no-repeat;
         background-size: contain;
     }
     70% {
-        background: url(./supermanPos/supermanPos3.png) center no-repeat;
+        background: url(./supermanFists/supermanFists4.png) center no-repeat;
         background-size: contain;
     }
     80% {
-        background: url(./supermanPos/supermanPos2.png) center no-repeat;
+        background: url(./supermanFists/supermanFists4.png) center no-repeat;
         background-size: contain;
+        
         
     }
     90% {
-        background: url(./supermanPos/superman.png) center no-repeat;
-        background-size: contain;
-        
+        background: url(./supermanFists/supermanFists.png) center no-repeat;
+        background-size: contain;  
+   
     }
     100% {
-        background: url(./supermanPos/superman.png) center no-repeat;
+        background: url(./supermanFists/supermanFists.png) center no-repeat;
         background-size: contain;
+    }
+}
+@keyframes supermanJump {
+    0% {
+        background: url(./supermanJump/sueprmanJump.png) center no-repeat;
+        background-size: contain;
+        transform: scaleX(-1) scale(10) translateY(0px);
         
     }
+    20%{
+        background: url(./supermanJump/sueprmanJump.png) center no-repeat;
+        background-size: contain;
+        transform: scaleX(-1) scale(10) translateY(0px);
+    
+    }
+    40% {
+        background: url(./supermanJump/sueprmanJump.png) center no-repeat;
+        background-size: contain;
+        transform: scaleX(-1) scale(10)  translateY(-10px);
+    
+    }
+    60%{
+        background: url(./supermanJump/supermanJump2.png) center no-repeat;
+        background-size: contain;
+        transform: scaleX(-1) scale(10) translateY(-10px);
+        
+        
+    }
+    80% {
+        background: url(./supermanJump/supermanJump2.png) center no-repeat;
+        background-size: contain;
+        transform: scaleX(-1) scale(10) translateY(0px);
+    }
+    100% {
+        background: url(./supermanJump/supermanJump2.png) center no-repeat;
+        background-size: contain;
+        transform: scaleX(-1) scale(10) translateY(0px);
+    }
+    
 }
