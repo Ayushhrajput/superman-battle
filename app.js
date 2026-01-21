@@ -13,6 +13,8 @@ const speedBtn = document.querySelector('.speed')
 const moveLeftBtn = document.querySelector('.moveLeft')
 const moveRightBtn = document.querySelector('.moveRight')
 const punchBtn = document.querySelector('.punch')
+const hitLaserIcon = document.querySelector('.hitLaserIcon')
+const speedIcon = document.querySelector('.speedIcon')
 for(let idx=0; idx<width*height; idx++){
     const square = document.createElement('div')
     layout.appendChild(square)
@@ -313,8 +315,10 @@ function hitLaserAction() {
     batmanCanFire = false
     enemnyActions/=2;
     laser();
+    hitLaserIcon.classList.add('noPower')
     setTimeout(() => {
         usingLaser = false;
+        hitLaserIcon.classList.remove('noPower')
     }, 2400);
     setTimeout(() => {
         batmanCanLaser = true;
@@ -329,11 +333,13 @@ function hitLaserAction() {
 function speedAction() {
     maxSpeed = true
     speed /=4;
+    speedIcon.classList.add('noPower')
     setTimeout(() => {
         speed *= 4;
     }, 4000);
     setTimeout(() => {
         maxSpeed = false
+        speedIcon.classList.remove('noPower')
     }, 10000);
 }
 function supermanMoves(e) {
