@@ -67,6 +67,7 @@ btn.addEventListener('click', () => {
 gameBtn.addEventListener('click', ()=> {
     location.reload(true)
 })
+
 function supermanJump() {
     let jumpInterval = setInterval(() => {
         squares[supermanIdx].classList.remove('supermanPos');
@@ -453,7 +454,7 @@ function batmanMoves() {
                 batmanLaser()
             }
         }
-        if(supermanHitpoints<0 || batmanHitpoints<0){
+        if(supermanHitpoints<=0 || batmanHitpoints<=0){
             clearInterval(batmanMovesInterval);
             res.classList.add('showRes')
             if(supermanHitpoints<0){

@@ -100,9 +100,8 @@ body {
     box-sizing: border-box;
 }
 .supermanPos {
-    background: url(./superman.png) center no-repeat;
-    background-size: contain;
-    transform: scale(10) scaleX(-1);
+    transform: scale(12) scaleX(-1);
+    animation: supermanPos 1s ease infinite;
 }
 .batmanPos {
     background: url(./batman.png) center;
@@ -111,9 +110,9 @@ body {
     
 }
 .superman {
-    background: url(./superman.png) center no-repeat;
+    background: url(./supermanPos/superman.png) center no-repeat;
     background-size: contain;
-    transform: scale(4) scaleX(-1);
+    transform: scale(6) scaleX(-1);
 }
 .batman {
     background: url(./batman.png) center;
@@ -242,10 +241,13 @@ body {
     filter: invert(0.4);
 }
 .supermanHitpoints {
-    background:  rgb(1, 174, 255);
+    background:  url(./blueLaser.png) center;
+    background-size: contain;
 }
 .batmanHitpoints {
-    background: rgb(255, 64, 64);
+    background: url(./redLaser.png) center ;
+    background-size: contain;
+    
 }
 .laser {
     background: url(./redLaser.png) center;
@@ -262,4 +264,56 @@ body {
 .batmanLaser {
     background: url(./blueLaser.png) center;
     background-size: contain;
+}
+
+@keyframes supermanPos {
+    0% {
+        background: url(./supermanPos/superman.png) center no-repeat;
+        background-size: contain;
+        
+        
+    }
+    10%{
+        background: url(./supermanPos/supermanPos2.png) center no-repeat;
+        background-size: contain;
+    
+    }
+    30% {
+        background: url(./supermanPos/supermanPos3.png) center no-repeat;
+        background-size: contain;
+    
+    }
+    40%{
+        background: url(./supermanPos/supermanPos4.png) center no-repeat;
+        background-size: contain;
+        
+    }
+    50% {
+        background: url(./supermanPos/supermanPos4.png) center no-repeat;
+        background-size: contain;
+        
+    }
+    60% {
+        background: url(./supermanPos/supermanPos4.png) center no-repeat;
+        background-size: contain;
+    }
+    70% {
+        background: url(./supermanPos/supermanPos3.png) center no-repeat;
+        background-size: contain;
+    }
+    80% {
+        background: url(./supermanPos/supermanPos2.png) center no-repeat;
+        background-size: contain;
+        
+    }
+    90% {
+        background: url(./supermanPos/superman.png) center no-repeat;
+        background-size: contain;
+        
+    }
+    100% {
+        background: url(./supermanPos/superman.png) center no-repeat;
+        background-size: contain;
+        
+    }
 }
