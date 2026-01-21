@@ -181,7 +181,7 @@ function supermanRightMove() {
     }
 }
 function laser() {
-    laserIdx = supermanIdx+4-width*2
+    laserIdx = supermanIdx-width*2
 
     function moveLaser() {
         laserIdx += 1
@@ -192,7 +192,7 @@ function laser() {
             batmanHitpoint()
             batmanHitpoints -= 4;
             
-            laserIdx -= 1;
+            laserIdx = laserIdx-1-width/2;
             clearInterval(laserInterval)
         }
         squares[laserIdx].classList.add('laser')
@@ -202,7 +202,7 @@ function laser() {
         setTimeout(() => {
             clearInterval(laserInterval);
             function removeLaser() {
-                laserIdx = supermanIdx+4-width*2;
+                laserIdx = supermanIdx-width*2;
                 let removeLaserInterval = setInterval(() => {
                     laserIdx +=1 
                     squares[laserIdx].classList.remove('laser')
@@ -524,7 +524,7 @@ function batmanMoves() {
     }
     function batmanLaser() {
         canUseLaser = false;
-        let batmanLaserIdx = batmanIdx-6-width
+        let batmanLaserIdx = batmanIdx-width
         let batmanLaserInterval = setInterval(() => {
             batmanLaserIdx -= 1;
             if(batmanLaserIdx%width == 6){
@@ -532,7 +532,7 @@ function batmanMoves() {
                 clearInterval(batmanLaserInterval)
             }
             if(squares[batmanLaserIdx+width].classList.contains('supermanPos')){
-                batmanLaserIdx+=1
+                batmanLaserIdx= batmanLaserIdx-width+1
                 clearInterval(batmanLaserInterval)
                 supermanHitFromLaser()
                 supermanHitpoints-=5
@@ -547,7 +547,7 @@ function batmanMoves() {
                 squares[batmanLaserIdx].classList.remove('batmanLaser')
                 clearInterval(batmanLaserInterval)
                 function batmanLaserRemove() {
-                    let batmanLaserIdx = batmanIdx-1-width;
+                    let batmanLaserIdx = batmanIdx-width;
                     let batmanLaserInterval = setInterval(() => {
                         squares[batmanLaserIdx].classList.remove('batmanLaser')
                         batmanLaserIdx--

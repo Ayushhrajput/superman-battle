@@ -250,7 +250,6 @@ body {
 .laser {
     background: url(./redLaser.png) center;
     background-size: contain;
-    transform: scale(10);
 }
 .fists {
     display: none;
@@ -263,5 +262,4 @@ body {
 .batmanLaser {
     background: url(./blueLaser.png) center;
     background-size: contain;
-    transform: scale(10);
 }
