@@ -53,6 +53,13 @@ for(let idx=batmanHitpointsIdx; idx<batmanHitpointsIdx+batmanHitpoints; idx++){
 btn.addEventListener('click', () => {
     layout.classList.remove('hideLayout')
     gameTitle.classList.add('hideLayout')
+    jumpBtn.classList.remove('hideLayout')
+    hitLaserBtn.classList.remove('hideLayout')
+    flyBtn.classList.remove('hideLayout')
+    punchBtn.classList.remove('hideLayout')
+    moveLeftBtn.classList.remove('hideLayout')
+    moveRightBtn.classList.remove('hideLayout')
+    speedBtn.classList.remove('hideLayout')
     batmanMoves()
 })
 gameBtn.addEventListener('click', ()=> {
@@ -172,14 +179,14 @@ function supermanRightMove() {
     }
 }
 function laser() {
-    laserIdx = supermanIdx+6
+    laserIdx = supermanIdx+4-width*2
 
     function moveLaser() {
         laserIdx += 1
-        if(laserIdx%width==0){
+        if(laserIdx%width==width-6){
             laserIdx -= 1;
         }
-        if(squares[laserIdx].classList.contains('batmanPos')){
+        if(squares[laserIdx+width*2].classList.contains('batmanPos')){
             batmanHitpoint()
             batmanHitpoints -= 4;
             
@@ -193,7 +200,7 @@ function laser() {
         setTimeout(() => {
             clearInterval(laserInterval);
             function removeLaser() {
-                laserIdx = supermanIdx+6;
+                laserIdx = supermanIdx+4-width*2;
                 let removeLaserInterval = setInterval(() => {
                     laserIdx +=1 
                     squares[laserIdx].classList.remove('laser')
@@ -511,14 +518,14 @@ function batmanMoves() {
     }
     function batmanLaser() {
         canUseLaser = false;
-        let batmanLaserIdx = batmanIdx-6
+        let batmanLaserIdx = batmanIdx-6-width
         let batmanLaserInterval = setInterval(() => {
             batmanLaserIdx -= 1;
-            if(batmanLaserIdx%width == width-1){
-                batmanLaserIdx+=0
+            if(batmanLaserIdx%width == 6){
+                batmanLaserIdx+=1
                 clearInterval(batmanLaserInterval)
             }
-            if(squares[batmanLaserIdx].classList.contains('supermanPos')){
+            if(squares[batmanLaserIdx+width].classList.contains('supermanPos')){
                 batmanLaserIdx+=1
                 clearInterval(batmanLaserInterval)
                 supermanHitFromLaser()
@@ -534,7 +541,7 @@ function batmanMoves() {
                 squares[batmanLaserIdx].classList.remove('batmanLaser')
                 clearInterval(batmanLaserInterval)
                 function batmanLaserRemove() {
-                    let batmanLaserIdx = batmanIdx-1;
+                    let batmanLaserIdx = batmanIdx-1-width;
                     let batmanLaserInterval = setInterval(() => {
                         squares[batmanLaserIdx].classList.remove('batmanLaser')
                         batmanLaserIdx--

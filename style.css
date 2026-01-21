@@ -12,7 +12,7 @@ body {
     position: absolute;
     width: 800px;
     height: 400px;
-    background: url(./map.png) no-repeat;
+    background: url(./map.jpg) no-repeat;
     background-size: cover;
 }
 
@@ -102,18 +102,18 @@ body {
 .supermanPos {
     background: url(./superman.png) center no-repeat;
     background-size: contain;
-    transform: scale(6) ;
+    transform: scale(10) scaleX(-1);
 }
 .batmanPos {
     background: url(./batman.png) center;
     background-size: contain;
-    transform: scale(6) scaleX(-1);
+    transform: scale(10) scaleX(-1);
     
 }
 .superman {
     background: url(./superman.png) center no-repeat;
     background-size: contain;
-    transform: scale(4) ;
+    transform: scale(4) scaleX(-1);
 }
 .batman {
     background: url(./batman.png) center;
@@ -123,7 +123,8 @@ body {
 .hitLaser {
     position: fixed;
     right: 60px;
-    bottom: 20vh;
+    bottom: 120px;
+    margin-bottom: 4px;
     width: 60px;
     height: 60px;
     background: rgb(0, 0, 0, 0.2);
@@ -135,7 +136,8 @@ body {
 .jump {
     position: fixed;
     left: 60px;
-    bottom: 30vh;
+    bottom: 180px;
+    margin-bottom: 4px;
     width: 60px;
     height: 60px;
     background: rgb(0, 0, 0, 0.2);
@@ -146,18 +148,20 @@ body {
 .fly {
     position: fixed;
     left: 60px;
-    bottom: 40vh;
+    bottom: 240px;
+    margin-bottom: 8px;
     width: 60px;
     height: 60px;
     background: rgb(0, 0, 0, 0.2);
     border: none;
     border-radius: 50%;
     color: white;
+    
 }
 .speed {
     position: fixed;
     right: 60px;
-    bottom: 10vh;
+    bottom: 60px;
     width: 60px;
     height: 60px;
     background: rgb(0, 0, 0, 0.2);
@@ -191,13 +195,14 @@ body {
 .punch {
     position: fixed;
     left: 60px;
-    bottom: 20vh;
+    bottom: 120px;
     width: 60px;
     height: 60px;
     background: rgb(0, 0, 0, 0.2);
     border: none;
     border-radius: 50%;
     color: white;
+
 }
 .hitLaserIcon {
     width: 60px;
@@ -209,8 +214,9 @@ body {
 .jumpIcon {
     width: 50px;
     height: 50px;
-    background: url(./superman.png) center no-repeat;
+    background: url(./jump.png) center no-repeat;
     background-size: contain;
+    transform: scaleX(-1);
 }
 .flyIcon {
     width: 50px;
@@ -223,6 +229,7 @@ body {
     height: 50px;
     background: url(./speed.png) center no-repeat;
     background-size: contain;
+    transform: scaleX(-1);
 }
 .punchIcon {
     width: 50px;
