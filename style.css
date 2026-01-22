@@ -8,26 +8,31 @@ body {
     font-family: Style;
     position: relative;
 }
+.viewport {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+}
 .map {
     position: absolute;
-    width: 800px;
-    height: 400px;
+    width: 720px;
+    height: 360px;
     background: url(./map.jpg) no-repeat;
     background-size: cover;
 }
 
 .layout {
-    width: 800px;
-    height: 400px;
+    width: 720px;
+    height: 360px;
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
 }
 .gameTitle {
     position: absolute;
-    width: 800px;
-    height: 400px;
-    background: url(./map.png);
+    width: 720px;
+    height: 360px;
+    background: rgb(0, 0, 0);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -36,7 +41,7 @@ body {
 }
 .playGame {
     padding:40px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgb(255, 255, 255, 0.1);
     border: 1px solid rgb(0, 0, 0, 0.1);
     color: white;
     border-radius: 24px;
@@ -57,8 +62,8 @@ body {
 }
 .res {
     position: absolute;
-    width: 800px;
-    height: 400px;
+    width: 720px;
+    height: 360px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,8 +100,8 @@ body {
     display: inline-block;
 }
 .layout div {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     box-sizing: border-box;
 }
 .supermanPos {

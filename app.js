@@ -52,8 +52,6 @@ for(let idx=batmanHitpointsIdx; idx<batmanHitpointsIdx+batmanHitpoints; idx++){
     squares[idx].classList.add('batmanHitpoints')
 }
 
-
-
 btn.addEventListener('click', () => {
     layout.classList.remove('hideLayout')
     gameTitle.classList.add('hideLayout')
