@@ -110,20 +110,11 @@ body {
     transform: scale(12) scaleX(-1);
     
 }
-.supermanPosition {
-    background: url(./supermanPos/supermanPos.png) center no-repeat;
-    background-size: contain;
-    transform: scale(12) scaleX(-1);
-    display: none;
-}
-
-
 
 .batmanPos {
-    background: url(./batman.png) center;
+    background: url(./batmanPos/batmanPos.png) center;
     background-size: contain;
-    transform: scale(10) scaleX(-1);
-    
+    transform: scale(12) scaleX(-1);
 }
 .superman {
     background: url(./supermanPos/supermanPos.png) center no-repeat;
@@ -131,7 +122,7 @@ body {
     transform: scale(6) scaleX(-1);
 }
 .batman {
-    background: url(./batman.png) center;
+    background: url(./batmanPos/batmanPos.png) center;
     background-size: contain;
     transform: scale(4);
 }
