@@ -39,6 +39,7 @@ let batmanHitpoints = 25;
 let supermanOnLand = true;
 let isSupermanOverLand = false;
 let isSupermanJumping = false;
+let supermanMoving = false;
 let speed = 40;
 
 let enemnyActions=4;
@@ -70,17 +71,18 @@ gameBtn.addEventListener('click', ()=> {
 })
 
 function supermanJump() {
-    squares[supermanIdx].classList.add('supermanJump')
-    squares[supermanIdx+1].classList.remove('supermanPosition');
+    
+    squares[supermanIdx].classList.remove('supermanPos');
     let jumpInterval = setInterval(() => {
-        squares[supermanIdx].classList.remove('supermanPos');
+        squares[supermanIdx].classList.remove('jumpPos');
         supermanIdx-= width;
         
-        squares[supermanIdx].classList.add('supermanPos');
+        squares[supermanIdx].classList.add('jumpPos');
         
     }, 40);
     supermanOnLand = false;
     setTimeout(() => {
+        squares[supermanIdx].classList.remove('jumpPos');
         clearInterval(jumpInterval)
         getDown()
     }, 400);
@@ -88,51 +90,77 @@ function supermanJump() {
 }
 function getDown() {
     let getDownInterval = setInterval(() => {
-        squares[supermanIdx].classList.remove('supermanPos');
+        squares[supermanIdx].classList.remove('jumpPos2');
         supermanIdx+= width;
         if(supermanIdx>squares.length-width*2){
             supermanIdx-= width;
         }
-        squares[supermanIdx].classList.add('supermanPos');
+        squares[supermanIdx].classList.add('jumpPos2');
     }, 40);
     setTimeout(() => {
         clearInterval(getDownInterval)
-        squares[supermanIdx].classList.remove('supermanJump')
-        squares[supermanIdx+1].classList.add('supermanPosition');
+        
+        squares[supermanIdx].classList.remove('jumpPos2')
+        squares[supermanIdx].classList.add('supermanPos');
         supermanOnLand = true;
     }, 400);
 }
 function supermanFly() {
-    let flyInterval = setInterval(() => {
-        squares[supermanIdx].classList.remove('supermanPos');
-        supermanIdx-= width;
-        if(supermanIdx<width*2){
-            supermanIdx+= width;
-        }
-        squares[supermanIdx].classList.add('supermanPos');
-    }, 10);
-    supermanOnLand = false;
+    squares[supermanIdx].classList.remove('supermanPos');
+    squares[supermanIdx].classList.add('flyPos');
+
     setTimeout(() => {
-        clearInterval(flyInterval)
-        getOverLand()
-    }, 240);
+        squares[supermanIdx].classList.remove('flyPos');
+        let flyInterval = setInterval(() => {
+            squares[supermanIdx].classList.remove('flyPos2');
+            supermanIdx-= width;
+            if(supermanIdx<width*2){
+                supermanIdx+= width;
+            }
+            squares[supermanIdx].classList.add('flyPos2');
+        }, 10);
+        supermanOnLand = false;
+        setTimeout(() => {
+            clearInterval(flyInterval)
+            squares[supermanIdx].classList.remove('flyPos2');
+
+            getOverLand()
+        }, 240);
+    }, 120);
 }
 function getOverLand() {
-    squares[supermanIdx].classList.add('supermanPos');
+    let supermanFly = ['supermanFly', 'supermanFly2', 'supermanFly3', 'supermanFly2']
+    let idx = 0;
+    
+    let flyInterval = setInterval(() => {
+        squares[supermanIdx].classList.remove(supermanFly[idx]);
+        idx++
+        squares[supermanIdx].classList.add(supermanFly[idx]);
+    }, 200);
     setTimeout(() => {
+        clearInterval(flyInterval)
         getOnLand()
+        squares[supermanIdx].classList.remove(supermanFly[idx]);
     }, 800);
 }
 function getOnLand() {
+    let flyPos = ['flyPos3', 'flyPos4']
+    let idx = 0;
+    setTimeout(() => {
+        squares[supermanIdx].classList.remove(flyPos[idx]);
+        idx++
+    }, 240);
     let getDownInterval = setInterval(() => {
-        squares[supermanIdx].classList.remove('supermanPos');
+        squares[supermanIdx].classList.remove(flyPos[idx]);
         supermanIdx+= width;
         if(supermanIdx>squares.length-width*2){
             supermanIdx-= width;
         }
-        squares[supermanIdx].classList.add('supermanPos');
+        squares[supermanIdx].classList.add(flyPos[idx]);
     }, 20);
     setTimeout(() => {
+        squares[supermanIdx].classList.remove(flyPos[idx]);
+        squares[supermanIdx].classList.add('supermanPos');
         clearInterval(getDownInterval) 
         while(!supermanOnLand){
             getSupermanOnLand()
@@ -142,11 +170,13 @@ function getOnLand() {
 }
 function getSupermanOnLand() {
     if(supermanIdx>2797){
+        squares[supermanIdx].classList.remove('flyPos4');
         squares[supermanIdx].classList.remove('supermanPos');
         supermanIdx-= width;
         squares[supermanIdx].classList.add('supermanPos');
         return 
     } else if(supermanIdx<2722){
+        squares[supermanIdx].classList.remove('flyPos4');
         squares[supermanIdx].classList.remove('supermanPos');
         supermanIdx+= width;
         squares[supermanIdx].classList.add('supermanPos');
@@ -189,7 +219,18 @@ function supermanRightMove() {
 }
 function laser() {
     laserIdx = supermanIdx-width*2
-
+    squares[supermanIdx].classList.remove('supermanPos')
+    laserPos = ['supermanLaser', 'supermanLaser2', 'sueprmanLaser3', 'supermanLaser4', 'sueprmanLaser3', 'supermanLaser2']
+    let idx = 0;
+    squares[supermanIdx].classList.add(laserPos[idx])
+    let LaserPosInterval = setInterval(() => {
+        squares[supermanIdx].classList.remove(laserPos[idx])
+        idx++
+        squares[supermanIdx].classList.add(laserPos[idx])
+        setTimeout(() => {
+            clearInterval(LaserPosInterval)
+        },  520);
+    }, 100);
     function moveLaser() {
         laserIdx += 1
         if(laserIdx%width==width-6){
@@ -215,6 +256,8 @@ function laser() {
                     squares[laserIdx].classList.remove('laser')
                 }, 4);
                 setTimeout(() => {
+                    squares[supermanIdx].classList.remove(laserPos[idx])
+                    squares[supermanIdx].classList.add('supermanPos')
                     clearInterval(removeLaserInterval)
                 }, 240);
             }
@@ -225,12 +268,24 @@ function laser() {
 
 function fists() {
     let fistsIdx = supermanIdx
-    squares[supermanIdx+1].classList.add('supermanFists')
-    squares[supermanIdx].classList.remove('supermanPosition');
+
+    let fistsPos = ['supermanPos', 'fistsPos', 'fistsPos2', 'fistsPos3', 'fistsPos4']
+    let idx = 0;
+    let fistsPosInterval = setInterval(() => {
+        squares[supermanIdx].classList.remove(fistsPos[idx])
+        idx++;
+        squares[supermanIdx].classList.add(fistsPos[idx])
+        
+        setTimeout(() => {
+            clearInterval(fistsPosInterval)
+            squares[supermanIdx].classList.remove(fistsPos[idx])
+        }, 480);
+    }, 120);
+    
     let fistsInterval = setInterval(() => {
         fistsIdx+=1
         if(squares[fistsIdx].classList.contains('batmanPos')){
-            fistsIdx-=1
+            fistsIdx+=1
             clearInterval(fistsInterval)
             batmanHitFromFists()
             batmanHitpoints -= 2;
@@ -243,19 +298,15 @@ function fists() {
                 let stopUsingFistsInterval = setInterval(() => {
                     fistsIdx +=1 
                     squares[fistsIdx].classList.remove('fists')
-                }, 10);
+                }, 60);
                 setTimeout(() => {
-                    squares[supermanIdx+1].classList.add('supermanPosition');
+                    squares[supermanIdx].classList.add('supermanPos')
                     clearInterval(stopUsingFistsInterval)
-                }, 40);
-                setTimeout(() => {
-                    
-                    squares[supermanIdx+1].classList.remove('supermanFists')
-                }, 600);
+                }, 240);
             }
             stopUsingFists()
-        }, 40);
-    }, 10);
+        }, 240);
+    }, 60);
 }
 function batmanHitpoint() {
     let idx = batmanHitpointsIdx+batmanHitpoints;
@@ -286,17 +337,26 @@ let canJump = true;
 
 function supermanFlyAction() {
     isSupermanOverLand = true;
-    supermanFly()
+    if(!supermanMoving){
+        supermanFly()
+    }
     setTimeout(() => {
         isSupermanOverLand = false;
     }, 1600);
 }
 function jumpAction() {
+    if(!supermanMoving){
+        supermanJump()
+    }
     isSupermanJumping = true;
-    supermanJump()
+    canJump = false;
+    
     setTimeout(() => {
         isSupermanJumping = false;
     }, 540);
+    setTimeout(() => {
+        canJump = true;
+    }, 800);
 }
 function fistsAction() {
     fists();
@@ -309,16 +369,24 @@ function fistsAction() {
 }
 function moveLeftAction() {
     supermanLeftMove()
+    supermanMoving = true
+    canJump = false
     canUseFists = false;
     setTimeout(() => {
         canUseFists = true;
+        canJump = true;
+        supermanMoving = false
     }, 400);
 }
 function moveRightAction() {
     supermanRightMove()
+    supermanMoving = true
+    canJump = false
     canUseFists = false;
     setTimeout(() => {
+        supermanMoving = false
         canUseFists = true;
+        canJump = true;
     }, 400);
 }
 function hitLaserAction() {

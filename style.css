@@ -102,15 +102,13 @@ body {
 .supermanPos {
     background: url(./supermanPos/supermanPos.png) center no-repeat;
     background-size: contain;
-    transform: scale() scaleX(-1);
-    display: none;
+    transform: scale(12) scaleX(-1);
+    
 }
 .supermanPosition {
     background: url(./supermanPos/supermanPos.png) center no-repeat;
     background-size: contain;
     transform: scale(12) scaleX(-1);
-}
-.hideSuperman {
     display: none;
 }
 
@@ -267,114 +265,107 @@ body {
     background-size: contain;
 }
 .fists {
-    display: none;
+    background: none;
 }
 .supermanFists {
     transform: scale(12);
     animation: fists 0.6s ease;
 }
-.supermanJump {
-    transform: scale(12);
-    animation: supermanJump 0.8s ease;
-}
 .fires {
     background: url(./batWeapon.png) center;
     background-size: contain;
+    transform: scale(4);
 }
 .batmanLaser {
     background: url(./blueLaser.png) center;
     background-size: contain;
 }
+.fistsPos {
+    background: url(./supermanFists/supermanFists.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
+.fistsPos2 {
+    background: url(./supermanFists/supermanFists2.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
+.fistsPos3 {
+    background: url(./supermanFists/supermanFists3.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
+.fistsPos4 {
+    background: url(./supermanFists/supermanFists4.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
 
 
-@keyframes fists {
-    0% {
-        background: url(./supermanFists/supermanFists.png) center no-repeat;
-        background-size: contain;
-        
-        
-    }
-    10%{
-        background: url(./supermanFists/supermanFists.png) center no-repeat;
-        background-size: contain;
-    
-    }
-    30% {
-        background: url(./supermanFists/supermanFists2.png) center no-repeat;
-        background-size: contain;
-        
-    
-    }
-    40%{
-        background: url(./supermanFists/supermanFists2.png) center no-repeat;
-        background-size: contain;
-        
-        
-    }
-    50% {
-        background: url(./supermanFists/supermanFists3.png) center no-repeat;
-        background-size: contain;
-        
-    }
-    60% {
-        background: url(./supermanFists/supermanFists3.png) center no-repeat;
-        background-size: contain;
-    }
-    70% {
-        background: url(./supermanFists/supermanFists4.png) center no-repeat;
-        background-size: contain;
-    }
-    80% {
-        background: url(./supermanFists/supermanFists4.png) center no-repeat;
-        background-size: contain;
-        
-        
-    }
-    90% {
-        background: url(./supermanFists/supermanFists.png) center no-repeat;
-        background-size: contain;  
-   
-    }
-    100% {
-        background: url(./supermanFists/supermanFists.png) center no-repeat;
-        background-size: contain;
-    }
+
+.jumpPos {
+    background: url(./supermanJump/sueprmanJump.png) center no-repeat;
+    background-size: contain;
+    transform: scaleX(-1) scale(10);
 }
-@keyframes supermanJump {
-    0% {
-        background: url(./supermanJump/sueprmanJump.png) center no-repeat;
-        background-size: contain;
-        transform: scaleX(-1) scale(10) translateY(0px);
-        
-    }
-    20%{
-        background: url(./supermanJump/sueprmanJump.png) center no-repeat;
-        background-size: contain;
-        transform: scaleX(-1) scale(10) translateY(0px);
-    
-    }
-    40% {
-        background: url(./supermanJump/sueprmanJump.png) center no-repeat;
-        background-size: contain;
-        transform: scaleX(-1) scale(10)  translateY(-10px);
-    
-    }
-    60%{
-        background: url(./supermanJump/supermanJump2.png) center no-repeat;
-        background-size: contain;
-        transform: scaleX(-1) scale(10) translateY(-10px);
-        
-        
-    }
-    80% {
-        background: url(./supermanJump/supermanJump2.png) center no-repeat;
-        background-size: contain;
-        transform: scaleX(-1) scale(10) translateY(0px);
-    }
-    100% {
-        background: url(./supermanJump/supermanJump2.png) center no-repeat;
-        background-size: contain;
-        transform: scaleX(-1) scale(10) translateY(0px);
-    }
-    
+.jumpPos2 {
+    background: url(./supermanJump/supermanJump2.png) center no-repeat;
+    background-size: contain;
+    transform: scaleX(-1) scale(10);
 }
+.flyPos {
+    background: url(./supermanFly/sueprmanFly.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12) scaleX(-1);
+}
+.flyPos2 {
+    background: url(./supermanFly/supermanFly2.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
+.flyPos3 {
+    background: url(./supermanFly/supermanFly3.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10);
+}
+.flyPos4 {
+    background: url(./supermanFly/supermanFly4.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10);
+}
+.supermanFly {
+    background: url(./supermanFly/supermanFlyPos/flyPos.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
+.supermanFly2 {
+    background: url(./supermanFly/supermanFlyPos/flyPos2.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
+.supermanFly3 {
+    background: url(./supermanFly/supermanFlyPos/flyPos3.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(12);
+}
+.supermanLaser {
+    background: url(./supermanLaser/supermanLaser.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) scaleX(-1);
+}
+.supermanLaser2 {
+    background: url(./supermanLaser/supermanLaser2.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) scaleX(-1);
+}
+.supermanLaser3 {
+    background: url(./supermanLaser/supermanLaser3.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) scaleX(-1);
+}
+.supermanLaser4 {
+    background: url(./supermanLaser/supermanLaser4.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) scaleX(-1);
+}
+
