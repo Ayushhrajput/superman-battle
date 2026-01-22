@@ -368,4 +368,38 @@ body {
     background-size: contain;
     transform:  scale(10) scaleX(-1);
 }
-
+.supermanRun {  
+    background: url(./supermanRun/runPos.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) scaleX(-1);
+    
+}
+.supermanRun2 {  
+    background: url(./supermanRun/runPos2.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) scaleX(-1);
+    
+}
+.supermanRun3 {  
+    background: url(./supermanRun/runPos3.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) scaleX(-1);
+    
+}
+.supermanRunBack {  
+    background: url(./supermanRun/runPos.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) ;
+    
+}
+.supermanRunBack2 {  
+    background: url(./supermanRun/runPos2.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) ;
+    
+}
+.supermanRunBack3 {  
+    background: url(./supermanRun/runPos3.png) center no-repeat;
+    background-size: contain;
+    transform:  scale(10) ;  
+}

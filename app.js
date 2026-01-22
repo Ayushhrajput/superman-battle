@@ -123,7 +123,7 @@ function supermanFly() {
         setTimeout(() => {
             clearInterval(flyInterval)
             squares[supermanIdx].classList.remove('flyPos2');
-
+            squares[supermanIdx].classList.add('supermanFly');
             getOverLand()
         }, 240);
     }, 120);
@@ -188,32 +188,52 @@ function getSupermanOnLand() {
 function supermanLeftMove() {
 
     if(supermanOnLand){
+        let runPos = ['supermanRunBack', 'supermanRunBack2', 'supermanRunBack3']
+        let idx = 0;
+        let supermanRunInterval = setInterval(() => {
+            squares[supermanIdx].classList.remove(runPos[idx])
+            idx++
+        }, 80);
+        squares[supermanIdx].classList.remove('supermanPos');
         let leftMoveInterval = setInterval(() => {
-            squares[supermanIdx].classList.remove('supermanPos');
+            squares[supermanIdx].classList.remove(runPos[idx])
             supermanIdx-= 1;
             if(supermanIdx%width == 1){
                 supermanIdx += 1;
             }
-            squares[supermanIdx].classList.add('supermanPos');
+            squares[supermanIdx].classList.add(runPos[idx]);
         }, speed);
         setTimeout(() => {
+            squares[supermanIdx].classList.add('supermanPos');
+            squares[supermanIdx].classList.remove(runPos[idx])
             clearInterval(leftMoveInterval)        
+            clearInterval(supermanRunInterval)
         }, 240);
     }
 }
 function supermanRightMove() {
 
     if(supermanOnLand){
+        let runPos = ['supermanRun', 'supermanRun2', 'supermanRun3']
+        let idx = 0;
+        let supermanRunInterval = setInterval(() => {
+            squares[supermanIdx].classList.remove(runPos[idx])
+            idx++
+        }, 80);
+        squares[supermanIdx].classList.remove('supermanPos');
         let leftMoveInterval = setInterval(() => {
-            squares[supermanIdx].classList.remove('supermanPos');
+            squares[supermanIdx].classList.remove(runPos[idx]);
             supermanIdx+= 1;
             if(supermanIdx%width == width-19){
                 supermanIdx -= 1;
             }
-            squares[supermanIdx].classList.add('supermanPos');
+            squares[supermanIdx].classList.add(runPos[idx]);
         }, speed);
         setTimeout(() => {
-            clearInterval(leftMoveInterval)        
+            squares[supermanIdx].classList.remove(runPos[idx]);
+            squares[supermanIdx].classList.add('supermanPos');
+            clearInterval(leftMoveInterval)    
+            clearInterval(supermanRunInterval)
         }, 240);
     }
 }
@@ -240,7 +260,7 @@ function laser() {
             batmanHitpoint()
             batmanHitpoints -= 4;
             
-            laserIdx = laserIdx-1-width/2;
+            laserIdx = laserIdx-1;
             clearInterval(laserInterval)
         }
         squares[laserIdx].classList.add('laser')
@@ -372,14 +392,17 @@ function moveLeftAction() {
     supermanMoving = true
     canJump = false
     canUseFists = false;
+    canMove = false
     setTimeout(() => {
         canUseFists = true;
         canJump = true;
         supermanMoving = false
-    }, 400);
+        canMove = true
+    }, 240);
 }
 function moveRightAction() {
     supermanRightMove()
+    canMove = false;
     supermanMoving = true
     canJump = false
     canUseFists = false;
@@ -387,7 +410,8 @@ function moveRightAction() {
         supermanMoving = false
         canUseFists = true;
         canJump = true;
-    }, 400);
+        canMove = true;
+    }, 240);
 }
 function hitLaserAction() {
     usingLaser = true;
@@ -479,6 +503,7 @@ punchBtn.addEventListener('click', () => {
         fistsAction()
     }
 })
+let supermanPositions = ['supermanPos', 'supermanRun','supermanRun2', 'supermanRun3', 'supermanRunBack', 'supermanRunBack2', 'supermanRunBack3', 'supermanLaser', 'supermanLaser2', 'supermanLaser3', 'supermanLaser4']
 function supermanHitFromFire() {
     let idx = supermanHitpointsIdx+supermanHitpoints;
     let supermanHitpointsInterval = setInterval(() => {
@@ -586,7 +611,9 @@ function batmanMoves() {
                 fireIdx+=1
                 clearInterval(batmanFiresInterval)
             }
-            if(squares[fireIdx].classList.contains('supermanPos')){
+            if(supermanPositions.some((pos) => (
+                squares[fireIdx].classList.contains(pos)
+            ))){
                 fireIdx+=1
                 clearInterval(batmanFiresInterval)
                 supermanHitFromFire()
@@ -613,8 +640,10 @@ function batmanMoves() {
                 batmanLaserIdx+=1
                 clearInterval(batmanLaserInterval)
             }
-            if(squares[batmanLaserIdx+width].classList.contains('supermanPos')){
-                batmanLaserIdx= batmanLaserIdx-width+1
+            if(supermanPositions.some((pos) => (
+                squares[batmanLaserIdx+width].classList.contains(pos)
+            ))){
+                batmanLaserIdx= batmanLaserIdx+1
                 clearInterval(batmanLaserInterval)
                 supermanHitFromLaser()
                 supermanHitpoints-=5
