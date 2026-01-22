@@ -355,6 +355,9 @@ let canUseFists = true;
 let canUseLaser = true
 let canJump = true;
 
+
+
+
 function supermanFlyAction() {
     isSupermanOverLand = true;
     if(!supermanMoving){
@@ -417,7 +420,6 @@ function hitLaserAction() {
     usingLaser = true;
     canMove = false;
     canJump = false;
-    batmanCanLaser = false;
     batmanCanFire = false
     enemnyActions/=2;
     laser();
@@ -427,7 +429,6 @@ function hitLaserAction() {
         hitLaserIcon.classList.remove('noPower')
     }, 2400);
     setTimeout(() => {
-        batmanCanLaser = true;
         batmanCanFire = true;
         enemnyActions*=2
     }, 1600);
@@ -632,7 +633,6 @@ function batmanMoves() {
         }, 10);
     }
     function batmanLaser() {
-        canUseLaser = false;
         let batmanLaserIdx = batmanIdx-width
         let batmanLaserInterval = setInterval(() => {
             batmanLaserIdx -= 1;
@@ -663,7 +663,6 @@ function batmanMoves() {
                         squares[batmanLaserIdx].classList.remove('batmanLaser')
                         batmanLaserIdx--
                         setTimeout(() => {
-                            canUseLaser= true
                             clearInterval(batmanLaserInterval)
                         }, 400);
                     }, 4);
