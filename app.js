@@ -396,9 +396,11 @@ function moveLeftAction() {
     canJump = false
     canUseFists = false;
     canMove = false
+    canUseLaser = false
     setTimeout(() => {
         canUseFists = true;
         canJump = true;
+        canUseLaser = true
         supermanMoving = false
         canMove = true
     }, 240);
@@ -408,10 +410,12 @@ function moveRightAction() {
     canMove = false;
     supermanMoving = true
     canJump = false
+    canUseLaser = false
     canUseFists = false;
     setTimeout(() => {
         supermanMoving = false
         canUseFists = true;
+        canUseLaser = true
         canJump = true;
         canMove = true;
     }, 240);

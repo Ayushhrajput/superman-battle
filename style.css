@@ -21,7 +21,7 @@ body {
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-
+    overflow: hidden;
 }
 .gameTitle {
     position: absolute;
@@ -263,6 +263,7 @@ body {
 .laser {
     background: url(./redLaser.png) center;
     background-size: contain;
+    transform: none;
 }
 .fists {
     background: none;
