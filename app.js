@@ -542,12 +542,10 @@ function batmanMoves() {
         if(batmanMoveIdx == 1){
             if(batmanCanJump && usingLaser){
                 batmanJump()
-            } else if(usedFists){
-                batmanGetBack()
-            }
+            } 
         } else if(batmanMoveIdx == 1 && !usingLaser){
             if(batmanCanLaser){
-                batmanLaser()
+                batmanGetBack()
             }
         } else if(batmanMoveIdx == 2 && !usingLaser){
             if(batmanCanFire ){
@@ -556,8 +554,6 @@ function batmanMoves() {
         } else if(batmanMoveIdx == 2 ){
             if(batmanCanJump && usingLaser){         
                 batmanJump()
-            } else if(usedFists){
-                batmanGetBack()
             }
         } else if(batmanMoveIdx == 3){
             if(batmanCanFire ){

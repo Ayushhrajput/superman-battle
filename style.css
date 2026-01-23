@@ -17,7 +17,7 @@ body {
     position: absolute;
     width: 800px;
     height: 400px;
-    background: url(./map.jpg) no-repeat;
+    background: url(./map.png) no-repeat;
     background-size: cover;
 }
 
