@@ -352,7 +352,7 @@ let canMove = true;
 let canUseFists = true;
 let canUseLaser = true
 let canJump = true;
-
+let usedFists = false;
 
 
 
@@ -382,10 +382,12 @@ function jumpAction() {
 function fistsAction() {
     fists();
     canMove = false;
+    usedFists = true
     canUseFists = false;
     setTimeout(() => {
         canMove = true;
         canUseFists = true;
+        usedFists = false
     }, 600);
 }
 function moveLeftAction() {
@@ -537,22 +539,25 @@ let batmanCanLaser = true;
 function batmanMoves() {
     let batmanMovesInterval = setInterval(() => {
         let batmanMoveIdx = Math.floor(Math.random()*enemnyActions+1)
-        if(batmanMoveIdx == 1 && usingLaser){
-            if(batmanCanJump){
+        if(batmanMoveIdx == 1){
+            if(batmanCanJump && usingLaser){
                 batmanJump()
-            }
-        
-        } else if(batmanMoveIdx == 1 && !usingLaser){
-            if(batmanCanBack){
+            } else if(usedFists){
                 batmanGetBack()
+            }
+        } else if(batmanMoveIdx == 1 && !usingLaser){
+            if(batmanCanLaser){
+                batmanLaser()
             }
         } else if(batmanMoveIdx == 2 && !usingLaser){
-            if(batmanCanBack ){
-                batmanGetBack()
+            if(batmanCanFire ){
+                batmanFires()
             }
-        } else if(batmanMoveIdx == 2 && usingLaser){
-            if(batmanCanJump ){
+        } else if(batmanMoveIdx == 2 ){
+            if(batmanCanJump && usingLaser){         
                 batmanJump()
+            } else if(usedFists){
+                batmanGetBack()
             }
         } else if(batmanMoveIdx == 3){
             if(batmanCanFire ){
@@ -575,55 +580,33 @@ function batmanMoves() {
     }, 1200);
     
     function batmanJump() {
-        squares[batmanIdx].classList.remove('batmanPos')
+        
         let batmanJumpInterval = setInterval(() => {
-            squares[batmanIdx].classList.remove('batmanJumpPos')
+            squares[batmanIdx].classList.remove('batmanPos')
             batmanIdx -= width
-            squares[batmanIdx].classList.add('batmanJumpPos')
-            
-        }, 40);
-        setTimeout(() => {
-            clearInterval(batmanJumpInterval)
-            squares[batmanIdx].classList.remove('batmanJumpPos')
-            batmanGetDown()
-        }, 400);
-    }
-    function batmanGetDown() {
-        let batmanJumpInterval = setInterval(() => {
-            squares[batmanIdx].classList.remove('batmanJumpPos2')
-            batmanIdx += width
-            if(batmanIdx>squares.length-width*2){
-                batmanIdx -= width
-            }
-            squares[batmanIdx].classList.add('batmanJumpPos2')
-        }, 40);
-        setTimeout(() => {
-            clearInterval(batmanJumpInterval)
-            squares[batmanIdx].classList.remove('batmanJumpPos2')
             squares[batmanIdx].classList.add('batmanPos')
-        }, 400);
-    }
-    function batmanGetBack() {
-        squares[batmanIdx].classList.remove('batmanPos')
-        let batmanBackInterval = setInterval(() => {
-            squares[batmanIdx].classList.remove('batmanGoBackPos')
-            batmanIdx += 1
-            squares[batmanIdx].classList.add('batmanGoBackPos')
-        }, 20);
-        setTimeout(() => {
-            clearInterval(batmanBackInterval)
-            squares[batmanIdx].classList.remove('batmanGoBackPos')
-            let batmanGoBackInterval = setInterval(() => {
-                squares[batmanIdx].classList.remove('batmanGoBackPos')
-                batmanIdx -= 1
-                squares[batmanIdx].classList.add('batmanGoBackPos')
-            }, 20);
+            
             setTimeout(() => {
-                clearInterval(batmanGoBackInterval)
-                squares[batmanIdx].classList.remove('batmanGoBackPos')
+                clearInterval(batmanJumpInterval)
+                squares[batmanIdx].classList.remove('batmanPos')
+                batmanIdx += width
                 squares[batmanIdx].classList.add('batmanPos')
-            }, 120);   
-        }, 120);
+            }, 400);
+        }, 40);
+    }
+    
+    function batmanGetBack() {
+        let batmanBackInterval = setInterval(() => {
+            squares[batmanIdx].classList.remove('batmanPos')
+            batmanIdx += 1
+            squares[batmanIdx].classList.add('batmanPos')
+            setTimeout(() => {
+                clearInterval(batmanBackInterval)
+                squares[batmanIdx].classList.remove('batmanPos')
+                batmanIdx -= 1
+                squares[batmanIdx].classList.add('batmanPos')
+            }, 120);
+        }, 20);
     }
     function batmanFires() {
         canUseLaser = false;
@@ -638,36 +621,35 @@ function batmanMoves() {
             setTimeout(() => {
                 clearInterval(batmanFiresPosInterval)
                 squares[batmanIdx].classList.remove(batmanFiresPos[idx])
-                let batmanFiresInterval = setInterval(() => {
-                    squares[fireIdx].classList.remove('fires')
-                    fireIdx -= 1;
-                    if(fireIdx%width == width-1){
-                        fireIdx+=1
-                        clearInterval(batmanFiresInterval)
-                    }
-                    if(supermanPositions.some((pos) => (
-                        squares[fireIdx].classList.contains(pos)
-                    ))){
-                        fireIdx+=1
-                        clearInterval(batmanFiresInterval)
-                        supermanHitFromFire()
-                        supermanHitpoints-=2
-                    }
-                    if(squares[fireIdx].classList.contains('laser')){
-                        fireIdx++
-                        clearInterval(batmanFiresInterval)
-                    }
-                    squares[fireIdx].classList.add('fires')
-                    squares[batmanIdx].classList.add('batmanPos')
-                    setTimeout(() => {
-                        squares[fireIdx].classList.remove('fires')
-                        clearInterval(batmanFiresInterval)
-                        canUseLaser = true;
-                    }, 800);
-                }, 10);
             }, 240);
-        }, 200);
-        
+        }, 200);       
+        let batmanFiresInterval = setInterval(() => {
+            squares[fireIdx].classList.remove('fires')
+            fireIdx -= 1;
+            if(fireIdx%width == width-1){
+                fireIdx+=1
+                clearInterval(batmanFiresInterval)
+            }
+            if(supermanPositions.some((pos) => (
+                squares[fireIdx].classList.contains(pos)
+            ))){
+                fireIdx+=1
+                clearInterval(batmanFiresInterval)
+                supermanHitFromFire()
+                supermanHitpoints-=2
+            }
+            if(squares[fireIdx].classList.contains('laser')){
+                fireIdx++
+                clearInterval(batmanFiresInterval)
+            }
+            squares[fireIdx].classList.add('fires')
+            squares[batmanIdx].classList.add('batmanPos')
+            setTimeout(() => {
+                squares[fireIdx].classList.remove('fires')
+                clearInterval(batmanFiresInterval)
+                canUseLaser = true;
+            }, 800);
+        }, 10);
     }
     function batmanLaser() {
         let batmanLaserIdx = batmanIdx-width
@@ -680,49 +662,48 @@ function batmanMoves() {
             squares[batmanIdx].classList.add(batmanLaserPos[idx])
             setTimeout(() => {
                 clearInterval(batmanLaserPosInterval)
-                let batmanLaserInterval = setInterval(() => {
-                    batmanLaserIdx -= 1;
-                    if(batmanLaserIdx%width == 6){
-                        batmanLaserIdx+=1
-                        clearInterval(batmanLaserInterval)
-                    }
-                    if(supermanPositions.some((pos) => (
-                        squares[batmanLaserIdx+width].classList.contains(pos)
-                    ))){
-                        batmanLaserIdx= batmanLaserIdx+1
-                        clearInterval(batmanLaserInterval)
-                        supermanHitFromLaser()
-                        supermanHitpoints-=5
-                    }
-                    if(squares[batmanLaserIdx].classList.contains('laser')){
-                        batmanLaserIdx++
-                        batmanLaserRemove()
-                        clearInterval(batmanLaserInterval)
-                    }
-                    squares[batmanLaserIdx].classList.add('batmanLaser')
-                    squares[batmanIdx].classList.add(batmanLaserPos[idx])
-                    
-                    setTimeout(() => {
-                        squares[batmanLaserIdx].classList.remove('batmanLaser')
-                        clearInterval(batmanLaserInterval)
-                        function batmanLaserRemove() {
-                            let batmanLaserIdx = batmanIdx-width;
-                            let batmanLaserInterval = setInterval(() => {
-                                squares[batmanLaserIdx].classList.remove('batmanLaser')
-                                batmanLaserIdx--
-                                setTimeout(() => {
-                                    squares[batmanIdx].classList.add('batmanPos');
-                                    squares[batmanIdx].classList.remove(batmanLaserPos[idx])
-                                    clearInterval(batmanLaserInterval)
-                                }, 400);
-                            }, 4);
-                        }
-                        batmanLaserRemove()
-                    }, 400);
-                }, 4);
+                
             }, 100);
-        }, 100);
-        
+        }, 100);   
+        let batmanLaserInterval = setInterval(() => {
+            batmanLaserIdx -= 1;
+            if(batmanLaserIdx%width == 6){
+                batmanLaserIdx+=1
+                clearInterval(batmanLaserInterval)
+            }
+            if(supermanPositions.some((pos) => (
+                squares[batmanLaserIdx+width].classList.contains(pos)
+            ))){
+                batmanLaserIdx= batmanLaserIdx+1
+                clearInterval(batmanLaserInterval)
+                supermanHitFromLaser()
+                supermanHitpoints-=5
+            }
+            if(squares[batmanLaserIdx].classList.contains('laser')){
+                batmanLaserIdx++
+                batmanLaserRemove()
+                clearInterval(batmanLaserInterval)
+            }
+            squares[batmanLaserIdx].classList.add('batmanLaser')
+            squares[batmanIdx].classList.add(batmanLaserPos[idx])
+            
+            setTimeout(() => {
+                squares[batmanLaserIdx].classList.remove('batmanLaser')
+                clearInterval(batmanLaserInterval)
+                function batmanLaserRemove() {
+                    let batmanLaserIdx = batmanIdx-width;
+                    let batmanLaserInterval = setInterval(() => {
+                        squares[batmanLaserIdx].classList.remove('batmanLaser')
+                        batmanLaserIdx--
+                        setTimeout(() => {
+                            squares[batmanIdx].classList.add('batmanPos');
+                            squares[batmanIdx].classList.remove(batmanLaserPos[idx])
+                            clearInterval(batmanLaserInterval)
+                        }, 400);
+                    }, 4);
+                }
+                batmanLaserRemove()
+            }, 400);
+        }, 4);   
     }
 }
-
