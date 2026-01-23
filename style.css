@@ -400,3 +400,43 @@ body {
     background-size: contain;
     transform:  scale(10) ;  
 }
+.batmanLaserPos {
+    background: url(./batmanLaser/batmanLaser.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) scaleX(-1);
+}
+.batmanLaserPos2 {
+    background: url(./batmanLaser/batmanLaser2.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) scaleX(-1);
+}
+.batmanLaserPos3 {
+    background: url(./batmanLaser/batmanLaser3.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) scaleX(-1);
+}
+.batmanJumpPos {
+    background: url(./batmanJumpPos/batmanjumpPos.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12);
+}
+.batmanJumpPos2 {
+    background: url(./batmanJumpPos/batmanjumpPos2.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) ;
+}
+.batmanFires {
+    background: url(./batmanFires/batmanFiresPos.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) scaleX(-1);
+}
+.batmanFires2 {
+    background: url(./batmanFires/batmanFiresPos2.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) scaleX(-1);
+}
+.batmanGoBackPos {
+    background: url(./batmanGoBackPos/batmanPos.png) center no-repeat;
+    background-size: contain;
+    transform: scale(12) scaleX(-1);
+}
