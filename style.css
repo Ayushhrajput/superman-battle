@@ -17,7 +17,7 @@ body {
     position: absolute;
     width: 800px;
     height: 400px;
-    background: url(./map.png) no-repeat;
+    background: url(./FeaturesImgs/map.png) no-repeat;
     background-size: cover;
 }
 
@@ -213,34 +213,34 @@ body {
 .hitLaserIcon {
     width: 60px;
     height: 60px;
-    background: url(./supermanLaser.png) center no-repeat;
+    background: url(./FeaturesImgs/supermanLaser.png) center no-repeat;
     background-size: contain;
     transform: scaleX(-1);
 }
 .jumpIcon {
     width: 50px;
     height: 50px;
-    background: url(./jump.png) center no-repeat;
+    background: url(./FeaturesImgs/jump.png) center no-repeat;
     background-size: contain;
     transform: scaleX(-1);
 }
 .flyIcon {
     width: 50px;
     height: 50px;
-    background: url(./fly.png) center no-repeat;
+    background: url(./FeaturesImgs/fly.png) center no-repeat;
     background-size: contain;
 }
 .speedIcon {
     width: 50px;
     height: 50px;
-    background: url(./speed.png) center no-repeat;
+    background: url(./FeaturesImgs/speed.png) center no-repeat;
     background-size: contain;
     transform: scaleX(-1);
 }
 .punchIcon {
     width: 50px;
     height: 50px;
-    background: url(./punch.png) center no-repeat;
+    background: url(./FeaturesImgs/punch.png) center no-repeat;
     background-size: contain;
     transform: scaleX(-1);
 }
@@ -257,7 +257,7 @@ body {
     
 }
 .laser {
-    background: url(./redLaser.png) center;
+    background: url(./FeaturesImgs/redLaser.png) center;
     background-size: contain;
     transform: none;
 }
@@ -269,12 +269,12 @@ body {
     animation: fists 0.6s ease;
 }
 .fires {
-    background: url(./batWeapon.png) center;
+    background: url(./FeaturesImgs/batWeapon.png) center;
     background-size: contain;
     transform: scale(4);
 }
 .batmanLaser {
-    background: url(./blueLaser.png) center;
+    background: url(./FeaturesImgs/blueLaser.png) center;
     background-size: contain;
 }
 .fistsPos {
