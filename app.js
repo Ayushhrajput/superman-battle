@@ -288,10 +288,7 @@ function fists() {
     let fistsIdx = supermanIdx
 
     let fistsPos = ['supermanPos', 'fistsPos', 'fistsPos2', 'fistsPos3', 'fistsPos4']
-    fistsPos.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    })
+    
     let idx = 0;
     let fistsPosInterval = setInterval(() => {
         squares[supermanIdx].classList.remove(fistsPos[idx])

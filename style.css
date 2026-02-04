@@ -318,7 +318,7 @@ body {
 .flyPos2 {
     background: url(./supermanFly/supermanFly2.png) center no-repeat;
     background-size: contain;
-    transform:  scale(12);
+    transform:  scale(12) scaleX(-1);
 }
 .flyPos3 {
     background: url(./supermanFly/supermanFly3.png) center no-repeat;
@@ -331,17 +331,17 @@ body {
     transform:  scale(10);
 }
 .supermanFly {
-    background: url(./supermanFly/supermanFlyPos/flyPos.png) center no-repeat;
+    background: url(./supermanFly/supermanFlyPos/supermanPos.png) center no-repeat;
     background-size: contain;
     transform:  scale(12);
 }
 .supermanFly2 {
-    background: url(./supermanFly/supermanFlyPos/flyPos2.png) center no-repeat;
+    background: url(./supermanFly/supermanFlyPos/supermanPos.png) center no-repeat;
     background-size: contain;
     transform:  scale(12);
 }
 .supermanFly3 {
-    background: url(./supermanFly/supermanFlyPos/flyPos3.png) center no-repeat;
+    background: url(./supermanFly/supermanFlyPos/supermanPos.png) center no-repeat;
     background-size: contain;
     transform:  scale(12);
 }
